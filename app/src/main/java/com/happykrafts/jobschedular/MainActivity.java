@@ -20,9 +20,9 @@ public class MainActivity extends AppCompatActivity {
     public void startJob(View view) {
         ComponentName componentName = new ComponentName(this,ExampleJobService.class);
         JobInfo info = new JobInfo.Builder(123,componentName)
-                .setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED)
+                .setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED) //This is to know weather WIFI is enabled
                 .setPersisted(true)
-                .setPeriodic(15*60*1000).build();
+                .setPeriodic(15*60*1000).build(); //This is to check every 15 minutes.
 
         JobScheduler scheduler = (JobScheduler)getSystemService(JOB_SCHEDULER_SERVICE);
         int resultCode =scheduler.schedule(info);
